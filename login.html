@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1.0">
+  <title>Login Form </title>
+  <style>
+   body{
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+    }
+
+    .form-container{
+      width:100%;
+      height: 100vh;
+      background-image: url("https://images.unsplash.com/photo-1494905998402-395d579af36f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y2FyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
+      background-size: cover;
+      background-position: center;
+    }
+
+      .form-container-content{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: rgba(0,0,0,.7);
+      }
+
+
+
+    .form-container-content h1{
+      font-size: 18px;
+      text-align: center;
+      color: blue;
+    }
+    
+    .form-container-content #loginForm label{ 
+      width: 100%;
+      font-size: 16px;
+    }
+  
+    .form-container-content #loginForm input[type="email"]{
+      width:90%;
+      padding: 15px;
+      margin: 10px auto;
+    }
+
+    .form-container-content #loginForm input[type="password"]{
+      width:90%;
+      padding: 15px;
+      margin: 10px auto;
+    }
+
+    .form-container-content #loginForm #submit_btn{
+      font-size: 18px;
+      width: 200px;
+      padding:10px ;
+      border-radius: 10px;
+      border:1px solid #fff;
+      background-color:transparent;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .form-container #error{
+      text-align: center;
+      color:red;
+    }
+    .form-container #success{
+      text-align: center;
+      color:green;
+    }
+  </style>
+</head>
+<body>
+  
+<div class="form-container" >
+ <div class="form-container-content">
+  <h1>Log-In</h1>
+  <p id ="error"></p>
+  <p id ="success"></p>
+   <form id="loginForm">
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" placeholder="Enter email" ><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" placeholder="Enter password" ><br>
+    <button type="submit" id="submit_btn">login</button> 
+   </form>
+ </div>
+</div>
+  <script type='text/javascript'>
+ 
+    document.getElementById("loginForm").addEventListener("submit", submitfn);
+
+    function submitfn(e){
+      e.preventDefault();
+      let email=document.querySelector("#email").value;
+      let password=document.querySelector("#password").value;  
+      let credentials = { email:"test@test.com",password:"password" }
+    
+    if(!email && !password){ 
+      document.getElementById("error").innerHTML=`You have not entered any detail!`;
+    }else if(!email){
+      document.getElementById("error").innerHTML=`You have not entered email! `;
+    }
+    else if(!password){
+      document.getElementById("error").innerHTML=`You have not entered password!`;
+    }else{
+          if(email==credentials.email && password==credentials.password){
+            window.location.href = "http://127.0.0.1:5500/index.html";
+          }else{
+            document.getElementById("error").innerHTML=`Invalid credentials!`;
+          } 
+    }
+  }
+
+  </script>
+</body>
+</html> 
